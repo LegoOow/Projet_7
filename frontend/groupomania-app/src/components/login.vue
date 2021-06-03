@@ -1,8 +1,6 @@
 <template>
-    <div class="wrapper">
+    <div class="main">
         <img src="/assets/img/icon-above-font.png" alt="Groupomania logo">
-        <nav><router-link to="/" class="active">Se connecter</router-link> | <router-link to="/signup">S'inscrire</router-link></nav>
-        <form @submit.prevent = login()>
 
             <label for="login-email">Email :</label>
             <input id="login-email" type="text" placeholder="Email" required>
@@ -13,18 +11,21 @@
             <div class="error-message">{{message}}</div>
 
             <button id="login-btn" type="submit">Connexion</button>
-
-            
-        </form>
     </div>
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api'
 
-export default defineComponent({
-	setup() {
-		
-	},
-})
 </script>
+
+<style scoped>
+    .main {
+        max-width: 500px;
+        margin: 100px auto;
+    }
+
+    img {
+        width: 100%;
+    }
+
+</style>
