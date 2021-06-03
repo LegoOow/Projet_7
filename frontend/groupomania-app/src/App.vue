@@ -1,20 +1,26 @@
-<script>
-import NavLink from './components/NavLink.vue'
-
-export default {
-	name: 'App',
-	components: {
-		NavLink
-	}
-}
-</script>
-
 <template>
-	<div id="app">
-		<nav>
-			<NavLink url="/" text="Accueil" />
-			<NavLink url="/about" text="À propos" />
-			<NavLink url="/contact" text="Contact" />
-		</nav>
-	</div>
+  <div id="app">
+    <router-view/>
+  </div>
 </template>
+
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+
+ a {
+  font-weight: bold;
+  color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+
+</style>
