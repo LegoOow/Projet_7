@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <img src="../assets/icon-above-font.png" alt="Groupomania logo">
+        <img src="../../public/img/icon-above-font.png" alt="Groupomania logo">
         <form>
             <label for="login-email">Email :</label>
             <input id="login-email" type="text" placeholder="Email" required>
@@ -21,10 +21,10 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
     .main {
         max-width: 500px;
-        margin: 100px auto;
+        margin: auto;
     }
 
     img {
@@ -40,4 +40,24 @@ export default {
         font-size: 1em;
     }
 
+    form input {
+        border-radius : 10px;
+        padding: 10px;
+        margin: 10px 0px 10px;
+    }
+
+    #login-btn {
+        padding: 10px;
+        font-size: 1.1rem;
+        color: white;
+        background-color: rgb(43, 42, 42);
+        border: none;
+        border-radius: 10px;
+        transition-duration: 0.2s;
+        cursor: pointer;
+    }
+
+    #login-btn:hover {
+        transform: scale(1.025);
+    }
 </style>
