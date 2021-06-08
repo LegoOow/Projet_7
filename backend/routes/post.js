@@ -4,12 +4,12 @@ const auth = require('../middlewares/auth');
 const userCtrl = require('../controllers/post');
 
 //Posts//
-router.get('/', userCtrl.getAllPost);
-router.post('/', userCtrl.newPost);
-router.get('/:id', userCtrl.getOnePost);
-router.delete('/:id', userCtrl.deleteOnePost);
-router.put('/:id', userCtrl.modifyOnePost);
-router.get('/user:id/posts', userCtrl.getUserPosts);
+router.get('/', auth, userCtrl.getAllPost);
+router.post('/', auth,userCtrl.newPost);
+router.get('/:id', auth,userCtrl.getOnePost);
+router.delete('/:id', auth,userCtrl.deleteOnePost);
+router.put('/:id', auth,userCtrl.modifyOnePost);
+router.get('/user:id/posts', auth,userCtrl.getUserPosts);
 
 module.exports = router;
 

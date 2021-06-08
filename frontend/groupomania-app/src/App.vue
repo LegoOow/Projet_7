@@ -16,10 +16,11 @@
 
  a {
   font-weight: bold;
-  color: #2c3e50;
+  color: inherit;
+  text-decoration: none;
 
-    &.router-link-exact-active {
-      color: #42b983;
+    a.router-link-exact-active {
+      color: inherit;
     }
   }
 
