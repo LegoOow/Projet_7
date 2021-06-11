@@ -2,11 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
-require('dotenv').config();
 
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
-const commentRoutes = require('./routes/comment');
 
 const app = express();
 
@@ -25,8 +23,7 @@ app.use(cors());
 
 //Routes//
 app.use('/api/auth', userRoutes);
-app.use('/api/post', postRoutes);
-app.use('/api/comment', commentRoutes);
+app.use('/api/posts', postRoutes);
 
 module.exports = app;
 

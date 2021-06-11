@@ -30,7 +30,7 @@ export default {
 
             fetch('http://localhost:4000/api/auth/login', {
                 method: 'POST',
-                body: email, password,
+                body: JSON.stringify({ email, password}),
                 headers: {
                     'Content-type': 'application/json'
                 }

@@ -1,18 +1,24 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const db = require('../models/database');
+require('dotenv').config();
 
-const TOKEN = process.env.TOKEN;
-
+//Inscription
 exports.signup = (req, res, next) => {
-    // Test password strength //
-    if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.{6,})/.test(req.body.password)) {   
-        return res.status(401).json({ error: 'Le mot de passe doit contenir une lettre majuscule, une minuscule et au moins 1 chiffre (6 caractères min)' });
-      } else {
-            bcrypt.hash(req.body.password, 10)
-                .then(hash => {
-                    //add to BDD//
-                    db.query(`INSERT INTO users VALUES (NULL, '${req.body.nom}', '${req.body.prenom}', '${hash}', '${req.body.email}', 0)`,
+    db.query(`SELECT * FROM users WHERE email='${req.body.email}'`,
+            (err, results, rows) => {
+                //Verification mail//
+                if (results.length > 0) {
+                    res.status(401).json({
+                        message: 'Email non disponible.'
+                    });
+                    //Si email disponible
+                } else {
+                //Crypt password//
+                bcrypt.hash(req.body.password, 10)
+                .then(cryptedPassword => {
+                    //Add to BDD//
+                    db.query(`INSERT INTO users VALUES (NULL, '${req.body.nom}', '${req.body.prenom}', '${cryptedPassword}', '${req.body.email}' , 0)`,
                         (err, results, fields) => {
                             if (err) {
                                 console.log(err);
@@ -24,8 +30,11 @@ exports.signup = (req, res, next) => {
                         }
                     );
                 })
-                .catch(error => res.status(500).json({ error }));
-        }
+                .catch(error => res.status(500).json({error})
+                
+                );
+            }
+    });
 };
 
 exports.login = (req, res, next) => {
@@ -47,11 +56,11 @@ exports.login = (req, res, next) => {
                                 nom: results[0].nom,
                                 prenom: results[0].prenom,
                                 admin: results[0].admin,
-                                token: jwt.sign(
-                                    { userId: results[0].id }, 
-                                    TOKEN, 
-                                    { expiresIn: '8h' }
-                                )
+                                token: jwt.sign({
+                                    userId: results[0].id
+                                }, process.env.TOKEN, {
+                                    expiresIn: '8h'
+                                })
                             });
                         }
                     });

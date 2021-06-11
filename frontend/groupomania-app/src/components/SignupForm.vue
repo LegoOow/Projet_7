@@ -31,6 +31,12 @@
 export default {
     name: 'SignupForm',
 
+    data() {
+        return {
+            message: "",
+        };
+    },
+
     methods: {
         signup(){
             const nom = document.getElementById("signup-nom").value;
@@ -42,7 +48,7 @@ export default {
             if(password === passwordVerif){
                 fetch('http://localhost:4000/api/auth/signup', {
                 method: 'POST',
-                body: nom, prenom, password, email,
+                body: JSON.stringify({nom, prenom, password, email}),
                 headers: {
                     'Content-type': 'application/json'
                 }
