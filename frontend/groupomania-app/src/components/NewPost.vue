@@ -14,7 +14,7 @@
                 <label for="newPost-content">Contenu</label>
                 
                 <editor
-                    apiKey="pwm5eqs0wnsqf0ip208nkercdytlgj4hyr2nx8544cd44c8k"
+                    apiKey="l8xys144dfg8dxacy36cs82zh68oi2yugm0p7ixz9pmwolhz"
                     v-model="content"
                     :init="{
                     menubar: false,

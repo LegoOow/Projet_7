@@ -12,7 +12,7 @@
             <label for="modify-content">Modifier le contenu :</label>
             <editor 
                 :initialValue="this.post.content"
-                apiKey="pwm5eqs0wnsqf0ip208nkercdytlgj4hyr2nx8544cd44c8k"
+                apiKey="l8xys144dfg8dxacy36cs82zh68oi2yugm0p7ixz9pmwolhz"
                 v-model="modifiedContent"
                 :init="{
                 menubar: false,
@@ -42,8 +42,13 @@
 
 <script>
 
+import Editor from '@tinymce/tinymce-vue'
 export default {
     name: 'OnePost',
+
+    components: {
+      editor: Editor
+    },
 
     data(){
         return{
