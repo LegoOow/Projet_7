@@ -1,28 +1,30 @@
 <template>
-  <div class="home">
-    <LoginForm v-if="!connected"/>
+    <div class="Profile">
+        <LoginForm v-if="!connected"/>
 
-    <Header v-if="connected"/>
-    <NewPost v-if="connected"/>
-    <Posts v-if="connected"/>
-  </div>
+        <Header v-if="connected"/>
+
+        <UserProfile v-if="connected"/>
+        <UserPosts v-if="connected"/>
+        
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
+
 import LoginForm from '@/components/LoginForm.vue';
-import Posts from '@/components/Posts.vue';
 import Header from '@/components/Header.vue';
-import NewPost from '@/components/NewPost.vue';
+import UserProfile from '@/components/UserProfile.vue';
+import UserPosts from '@/components/UserPosts.vue';
 
 export default {
-  name: 'Home',
+    name: 'Profile',
 
-  components: {
-    LoginForm,
-    Posts,
-    Header,
-    NewPost
+    components: {
+        LoginForm,
+        Header,
+        UserProfile,
+        UserPosts
   },
 
   data() {
@@ -31,7 +33,7 @@ export default {
     };
   },
 
-  created(){
+   created(){
     this.checkConnected()
   },
 
@@ -45,7 +47,7 @@ export default {
         this.connected = false;
         console.log('Utilisateur non connecté !');
       }
-    }
+    },
   }
 }
 </script>

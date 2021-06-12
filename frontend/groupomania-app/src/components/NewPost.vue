@@ -46,14 +46,10 @@
 
 <script>
 
-import Editor from '@tinymce/tinymce-vue'
+
 
 export default {
     name: 'NewPost',
-
-    components: {
-      editor: Editor
-    },
 
     data(){
         return{
