@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <Login/>
-    <Header/>
+    <Login v-if="!connected"/>
+
+    <Header v-if="connected"/>
 
   </div>
 </template>
