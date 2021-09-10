@@ -4,7 +4,7 @@ const auth = require('../middlewares/auth');
 
 const userCtrl = require('../controllers/user');
 
-router.post('/signup', userCtrl.signup);
-router.post('/login', userCtrl.login);
+router.post('/signup',auth, userCtrl.signup);
+router.post('/login',auth, userCtrl.login);
 
 module.exports = router;
