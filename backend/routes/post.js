@@ -4,17 +4,17 @@ const auth = require('../middlewares/auth');
 const userCtrl = require('../controllers/post');
 
 //Posts//
-router.get('/',auth,userCtrl.getAllPost);
-router.post('/',auth,userCtrl.newPost);
-router.get('/:id',auth,userCtrl.getOnePost);
-router.delete('/:id',auth,userCtrl.deleteOnePost);
-router.put('/:id',auth,userCtrl.modifyOnePost);
-router.get('/user:id/posts',auth,userCtrl.getUserPosts);
+router.get('/', userCtrl.getAllPost);
+router.post('/', userCtrl.newPost);
+router.get('/:id', userCtrl.getOnePost);
+router.delete('/:id', userCtrl.deleteOnePost);
+router.put('/:id', userCtrl.modifyOnePost);
+router.get('/user:id/posts', userCtrl.getUserPosts);
 
 //Comments//
-router.get('/:id/comments',auth,userCtrl.getAllComments);
-router.post('/:id/comment/',auth,userCtrl.newComment);
-router.delete('/comment/:id',auth,userCtrl.deleteComment);
+router.get('/:id/comments', userCtrl.getAllComments);
+router.post('/:id/comment/', userCtrl.newComment);
+router.delete('/comment/:id', userCtrl.deleteComment);
 
 module.exports = router;
 

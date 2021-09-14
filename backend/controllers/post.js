@@ -77,7 +77,7 @@ exports.getAllComments = (req, res, next) => {
             return res.status(200).json(result);
         });
 };
-//Delete comment//
+// Delete comment //
 exports.deleteComment = (req, res, next) => {
     db.query(`DELETE FROM comments WHERE comments.id = ${req.params.id}`, (error, result, field) => {
         if (error) {
