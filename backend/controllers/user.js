@@ -4,7 +4,7 @@ const db = require('../models/database');
 require('dotenv').config();
 
 //Inscription
-exports.signup = (req, res, next) => {
+exports.register= (req, res, next) => {
     db.query(`SELECT * FROM users WHERE email='${req.body.email}'`,
             (err, results, rows) => {
                 //Verification mail//
