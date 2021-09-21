@@ -71,6 +71,7 @@ img {
 nav {
   font-size: 1.4rem;
   margin-bottom: 10px;
+  margin-right: 140px;
 }
 
 form {
