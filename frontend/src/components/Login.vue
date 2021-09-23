@@ -70,8 +70,7 @@ img {
 
 nav {
   font-size: 1.4rem;
-  margin-bottom: 10px;
-  margin-right: 140px;
+  margin: 0 30px 10px 0;
 }
 
 form {

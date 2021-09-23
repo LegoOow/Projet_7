@@ -4,7 +4,9 @@
             <img class="logoHeader" alt='groupomania logo' src="../assets/icon-left-font.png">
         </router-link>
         <nav>
-            <div class="account">Mon compte</div>
+            <router-link to='/UserAccount'>
+                <div class="account">Mon compte</div>
+            </router-link>
             <div class="disconnect" @click = disconnect()>Se déconnecter</div>
         </nav>
     </div>
@@ -28,9 +30,8 @@ export default {
 
 .header {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 .logoHeader {
@@ -40,10 +41,9 @@ export default {
 }
 
 nav {
-    position: relative;
-    left: 70px;
     font-size: 1.4rem;
     cursor: pointer;
+    margin: 30px 20px 0px 0px;
 }
 
 .account {
