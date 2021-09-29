@@ -28,15 +28,17 @@ export default {
 
             fetch('http://localhost:4000/api/auth/login', {
                 method: 'POST',
-                body: JSON.stringify({ email, password}),
+                body: JSON.stringify({password, email}),
                 headers: {
                     'Content-type': 'application/json'
                 }
             })
 
             .then(res => {
-                localStorage.setItem('user', JSON.stringify(res.data));
-                location.reload();
+              if(res.status === 200) {
+                localStorage.setItem('user', res.data);
+                location.href = '/HomeUser';
+              }
             })
             .catch((error) => {
                 if (error.response.status === 404) {

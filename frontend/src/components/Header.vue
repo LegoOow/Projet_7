@@ -1,6 +1,6 @@
 <template>
     <div class='header'>
-        <router-link to='/'>
+        <router-link to='/HomeUser'>
             <img class="logoHeader" alt='groupomania logo' src="../assets/icon-left-font.png">
         </router-link>
         <nav>
@@ -19,7 +19,7 @@ export default {
     methods: {
         disconnect() {
             localStorage.removeItem('user');
-            localStorage.href="/";
+            location.href="/";
         }
     }
 
@@ -48,6 +48,7 @@ nav {
 
 .account {
     margin-bottom: 3px;
+    text-decoration: none;
 }
 
 .disconnect:hover, .account:hover {
