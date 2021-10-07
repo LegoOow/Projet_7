@@ -37,6 +37,7 @@ export default {
             .then(res => {
               if(res.status === 200) {
                 localStorage.setItem('user', res.data);
+                JSON.parse(localStorage.user);
                 location.href = '/HomeUser';
               }
             })

@@ -1,17 +1,24 @@
 <template>
-  <div class="account">
+  <div class="useraccount">
       <Header />
-      <p>charabia</p>
+      <h1>Bonjour</h1>
+    
   </div>
 </template>
 
 <script>
 
 import Header from '../components/Header.vue'
+
 export default {
-  components: { Header },
+  Name: 'UserAccount',
+  
+  components: { 
+    Header 
+  },
 
 }
+
 </script>
 
 <style>
