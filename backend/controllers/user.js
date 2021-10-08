@@ -8,7 +8,7 @@ exports.register= (req, res, next) => {
     db.query(`SELECT * FROM users WHERE email='${req.body.email}'`,
             (err, results, rows) => {
                 //Verification mail//
-                if (results.length > 0) {
+                if (results > 0) {
                     res.status(401).json({
                         message: 'Email non disponible.'
                     });
@@ -42,7 +42,7 @@ exports.login = (req, res, next) => {
     db.query(`SELECT * FROM users WHERE email='${req.body.email}'`,
         (err, results, rows) => {
             //if users find// 
-            if (results.length > 0) {
+            if (results) {
                 //Password verification//
                 bcrypt.compare(req.body.password, results[0].password)
                     .then(valid => {

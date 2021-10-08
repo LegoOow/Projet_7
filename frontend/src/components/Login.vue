@@ -16,6 +16,8 @@
 
 <script>
 
+import axios from 'axios';
+
 export default {
     name: 'Login',
 
@@ -26,18 +28,21 @@ export default {
             const password = document.getElementById("login-password").value;
 
 
-            fetch('http://localhost:4000/api/auth/login', {
-                method: 'POST',
-                body: JSON.stringify({password, email}),
-                headers: {
-                    'Content-type': 'application/json'
+            axios.post(`http://localhost:4000/api/auth/login`,
+                {
+                    email,
+                    password
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
                 }
-            })
+            )
 
             .then(res => {
               if(res.status === 200) {
-                localStorage.setItem('user', res.data);
-                JSON.parse(localStorage.user);
+                localStorage.setItem('user', JSON.stringify(res.data));
                 location.href = '/HomeUser';
               }
             })
