@@ -70,3 +70,14 @@ exports.login = (req, res, next) => {
         }
     );
 };
+
+exports.getUserProfile = (req, res, next) => {
+    db.query(`SELECT * FROM users WHERE users.id='${req.params.id}`,
+        (err, results, rows) => {
+            if (error) {
+                return res.status(400).json({ err });
+            }
+            return res.status(200).json(result);
+        }
+    );
+}

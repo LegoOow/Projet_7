@@ -26,20 +26,22 @@ export default {
   created() {
     this.displayProfile;
   },
+
+  
   
   methods: {
     displayProfile() {
       const userId = localStorage.getItem('userId');
 
-      axios.get('http://localhost:4000/api/user/' + userId, {
+      axios.get('http://localhost:4000/api/auth/user/' + userId, {
         headers: {
 						Authorization: 'Bearer ' + localStorage.getItem('token')
 					}
       })
       .then(res => {
+        console.log(res.data);
         this.user = res.data;
       })
-      .catch()
     }
   }
 }

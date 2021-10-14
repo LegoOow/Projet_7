@@ -26,8 +26,7 @@ export default {
         login(){
             const email = document.getElementById("login-mail").value;
             const password = document.getElementById("login-password").value;
-
-
+            
             axios.post(`http://localhost:4000/api/auth/login`,
                 {
                     email,
@@ -42,7 +41,10 @@ export default {
 
             .then(res => {
               if(res.status === 200) {
-                localStorage.setItem('user', JSON.stringify(res.data));
+                localStorage.setItem('prenom', res.data.prenom);
+                localStorage.setItem('nom', res.data.nom);
+                localStorage.setItem('userId', res.data.userId);
+                localStorage.setItem('token', res.data.token);
                 location.href = '/HomeUser';
               }
             })
