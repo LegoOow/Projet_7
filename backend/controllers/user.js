@@ -56,11 +56,11 @@ exports.login = (req, res, next) => {
                                 nom: results[0].nom,
                                 prenom: results[0].prenom,
                                 admin: results[0].admin,
-                                token: jwt.sign({
-                                    userId: results[0].id
-                                }, process.env.TOKEN, {
-                                    expiresIn: '8h'
-                                })
+                                token: jwt.sign(
+                                    { userId: results[0].id }, 
+                                    process.env.TOKEN, 
+                                    { expiresIn: '8h' }
+                                )
                             });
                         }
                     });
@@ -72,10 +72,13 @@ exports.login = (req, res, next) => {
 };
 
 exports.getUserProfile = (req, res, next) => {
-    db.query(`SELECT * FROM users WHERE users.id='${req.params.id}`,
-        (err, results, rows) => {
+    console.log('getUserProfile', req.params.id)
+    db.query(`SELECT * FROM users WHERE id='${req.params.id}'`,
+        (error, result, rows) => {
+            console.log('error', error)
+            console.log('result', result)
             if (error) {
-                return res.status(400).json({ err });
+                return res.status(400).json({ error });
             }
             return res.status(200).json(result);
         }

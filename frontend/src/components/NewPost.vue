@@ -21,6 +21,7 @@ export default {
     methods: {
         sendNewPost() {
             const postContent = document.getElementById("postcontent").value;
+            console.log(postContent);
             const userId = localStorage.getItem('userId');
             const token = localStorage.getItem('token');
 
@@ -32,7 +33,7 @@ export default {
                 {
                     headers: {
                         'content-type' : 'application/json',
-                        'Authorization': `Bearer` + token
+                        'Authorization': `Bearer ` + token
                     }
                 }
                 .then(res => {

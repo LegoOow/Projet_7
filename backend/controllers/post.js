@@ -11,7 +11,7 @@ exports.getAllPost = (req, res, next) => {
 };
 // NewPost //
 exports.newPost = (req, res, next) => {
-    db.query(`INSERT INTO posts VALUES (NULL, '${req.body.userId}', '${req.body.title}', NOW(), '${req.body.content}')`, (error, result, field) => {
+    db.query(`INSERT INTO posts VALUES (NULL, '${req.body.userId}', NOW(), '${req.body.content}')`, (error, result, field) => {
         if (error) {
             return res.status(400).json({ error });
         }

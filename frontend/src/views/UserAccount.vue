@@ -1,14 +1,14 @@
 <template>
   <div class="useraccount">
       <Header />
-      <h1>Bonjour {{ user.prenom }}</h1>
+      <h1>Bonjour, {{ user.prenom }} {{ user.nom }}</h1>
     
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 
+import axios from 'axios';
 import Header from '../components/Header.vue'
 
 export default {
@@ -24,7 +24,7 @@ export default {
     }
   },
   created() {
-    this.displayProfile;
+    this.displayProfile();
   },
 
   
@@ -33,24 +33,21 @@ export default {
     displayProfile() {
       const userId = localStorage.getItem('userId');
 
-      axios.get('http://localhost:4000/api/auth/user/' + userId, {
+      axios.get('http://localhost:4000/api/auth/profile/' + userId, {
+        
         headers: {
-						Authorization: 'Bearer ' + localStorage.getItem('token')
-					}
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ` + localStorage.getItem('token')
+                    }
       })
       .then(res => {
-        console.log(res.data);
-        this.user = res.data;
+        this.user = res.data[0];
       })
     }
   }
 }
 
-
-
 </script>
-
-
 
 <style>
 
